@@ -7,10 +7,11 @@ def find_packets_with_timeline(start_time, end_time, filter_expression, output_f
     # Construct the command
     command = [
         'FindPacketsWithTimeline',
-        '-s', start_time,
+        '-b', start_time,
         '-e', end_time,
-        '-f', filter_expression,
-        '-o', output_file
+        '-o', output_file,
+        '-f', filter_expression
+        
     ]
     try:
         # Run the command
