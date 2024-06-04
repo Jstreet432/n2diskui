@@ -1,22 +1,22 @@
 # n2diskui
 https://shop.firstlight.net/wp-content/uploads/2014/05/n2disk-UsersGuide.pdf
 
-python 3.10 \n
-sudo apt install python3-poetry \n
+python 3.10 
+sudo apt install python3-poetry 
 
-to get started\n
+to get started
 
-add this line to your .bashrc \n
-export PATH="$HOME/.poetry/bin:$PATH" \n
-restart terminal \n
-\n
+add this line to your .bashrc 
+export PATH="$HOME/.poetry/bin:$PATH" 
+restart terminal 
+
 >poetry install 
-\n
+
 to work on it \ n
 >poetry shell
 
-\n
-sudo apt update \n
-sudo apt install postgresql postgresql-contrib \n
+
+sudo apt update 
+sudo apt install postgresql postgresql-contrib 
 
 
