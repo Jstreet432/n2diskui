@@ -6,7 +6,7 @@ from n2diskui.api import get_file_download
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title='N2DiskUI')
+    return render_template('FrontPage.html', title='N2DiskUI')
 
 @app.route('/download/<filename>', methods=['GET'])
 def download_file(filename):
