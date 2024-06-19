@@ -9,6 +9,7 @@ from flask import send_file, abort
 DOWNLOADABLE_FILE_DIR = f"{app.config['BASE_DIR']}/n2diskui/files"
 
 def find_packets_with_timeline(start_time, end_time, filter_expression, output_file):
+    output_file = f'{DOWNLOADABLE_FILE_DIR}/{output_file}'
     # Construct the command
     command = [
         'FindPacketsWithTimeline',
@@ -23,6 +24,7 @@ def find_packets_with_timeline(start_time, end_time, filter_expression, output_f
         subprocess.run(command, check=True)
         return True, f"Packets saved to {output_file}"
     except subprocess.CalledProcessError as e:
+        app.logger.error(f'There was an error indexing the packet. {e}')
         return False, str(e)
 
 def get_file_download(filename):
