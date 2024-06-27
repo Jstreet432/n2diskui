@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Add some padding for better appearance */
+    width: 100%;
+    flex-wrap: wrap; /* Allow the text to wrap below the navbar */
+}
+
+.logo {
+    flex: 0 0 auto; /* Ensures the logo stays on the left */
+}
+
+.logo a {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar {
+    flex: 1; /* Allow navbar to take available space */
+    display: flex;
+    justify-content: center; /* Center the navbar items */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 20px; /* Centered space between items */
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #ffa500; /* Example accent color */
+}
+
+.cta-button {
+    background-color: #ffa500; /* Example accent color */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+    flex: 0 0 auto; /* Ensures the button stays on the right */
+}
+
+.cta-button:hover {
+    background-color: #e69500;
+}
+
+.connection-status {
+    width: 100%;
+    text-align: center;
+    color: #ffa500; /* Example accent color */
+    font-size: 1.2rem;
+    margin-top: 10px; /* Space above the text */
+}
+
+.connection-status .highlight {
+    color: #ff4500; /* Different color for the word "Instance" */
+}
+
+/* Main Content */
+.main-content {
+    margin-top: 40px;
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    justify-content: space-between;
+}
+
+.filter-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.filter-box, .results-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-box {
+    flex: 3;
+    margin-right: 20px;
+}
+
+.results-box {
+    flex: 1;
+}
+
+.filter-box h2, .results-box h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filter-button {
+    background-color: #ffa500;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.filter-button:hover {
+    background-color: #e69500;
+}
+
+.results-list {
+    list-style: none;
+    padding: 0;
+}
+
+.results-list li {
+    margin-bottom: 10px;
+}
+
+.results-list a {
+    color: #ffa500;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.results-list a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start; /* Ensure the logo stays on the left */
+    }
+   
+    .navbar {
+        justify-content: flex-start; /* Align the navbar to the left */
+        width: 100%; /* Make the navbar take the full width */
+        margin-top: 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+   
+    .navbar ul li {
+        margin: 10px 0;
+    }
+   
+    .cta-button {
+        margin-top: 20px;
+        align-self: flex-start; /* Ensure the button aligns to the left */
+    }
+   
+    .connection-status {
+        text-align: left;
+        margin-top: 20px; /* Adjust margin for small screens */
+    }
