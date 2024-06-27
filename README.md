@@ -10,10 +10,16 @@ sudo apt install python3-poetry
 add these lines to your .bashrc 
 
 export PATH="$HOME/.poetry/bin:$PATH" 
+
+FOR ROCKY LINUX
+export PATH="/root/.local/bin:$PATH"
+
 export FLASK_APP=run.py
 export FLASK_ENV="development"
 
 restart terminal 
+
+curl -sSL https://install.python-poetry.org | python3 -
 
 > poetry install 
 
