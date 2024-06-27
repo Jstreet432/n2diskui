@@ -89,3 +89,9 @@ my_flask_app/
     └── ...
 
 ```
+
+running n2disk 
+
+sudo n2disk -i enp3s0 -o /home/storage -b 1024 -p 512 --disk-limit 50% -I -A /home/storage
+
+- make sure there is write access all the way to storage.
