@@ -95,3 +95,5 @@ running n2disk
 sudo n2disk -i enp3s0 -o /home/storage -b 1024 -p 512 --disk-limit 50% -I -A /home/storage
 
 - make sure there is write access all the way to storage.
+- also dont delete the files and try and move them, they symlink.
+- best to run this and then get the files from /home/storage, or wherever you saved it.

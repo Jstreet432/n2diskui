@@ -30,45 +30,32 @@
         <div class="filter-container">
             <div class="filter-box">
                 <h2>Filter N2Disk Data</h2>
-                <form>
+                <form action="/filter_return_pcap" method="post">
                     <div class="form-group">
-                        <label for="filter1">Filter 1:</label>
-                        <select id="filter1" name="filter1">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
+                        <label for="timeline_directory">Timeline Directory:</label>
+                        <select id="timeline_directory" name="timeline_directory" required>
+                            <!-- Autodetect in production -->
+                            <option value="/home/storage/">/home/storage/</option>
+                            <option value="/tmp/n2disk/">/tmp/n2disk/</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="filter2">Filter 2:</label>
-                        <select id="filter2" name="filter2">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                        <label for="start_date">Start Date:</label>
+                        <input type="text" id="start_date" name="start_date" required>
                     </div>
                     <div class="form-group">
-                        <label for="filter3">Filter 3:</label>
-                        <select id="filter3" name="filter3">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                        <label for="end_date">End Date:</label>
+                        <input type="text" id="end_date" name="end_date" required>
                     </div>
                     <div class="form-group">
-                        <label for="filter4">Filter 4:</label>
-                        <select id="filter4" name="filter4">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                        <label for="bpf_filter">BPF filter:</label>
+                        <input type="text" id="bpf_filter" name="bpf_filter" required>
                     </div>
                     <div class="form-group">
-                        <label for="filter5">Filter 5:</label>
-                        <select id="filter5" name="filter5">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
+                        <label for="save_to">Save:</label>
+                        <select id="save_to" name="save_to" required>
+                            <option value="server">To Server</option>
+                            <option value="pc">To PC</option>
                         </select>
                     </div>
                     <button type="submit" class="filter-button">Apply Filters</button>
