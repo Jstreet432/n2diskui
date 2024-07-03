@@ -139,13 +139,13 @@ body {
     color: #333;
 }
 
-.form-group select {
+.form-group select,
+.form-group input[type="text"] {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
-
 .filter-button {
     background-color: #ffa500;
     color: #fff;
