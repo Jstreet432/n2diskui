@@ -7,4 +7,5 @@ poetry.lock
 .pytest_cache/
 .coverage
 .env
-
+node_modules/
+n2diskui/files
