@@ -2,7 +2,7 @@ from datetime import datetime
 import subprocess
 import os
 import re
-from typing import Tuple, json
+from typing import Tuple
 # This proxy import gives us autocomplete when referencing app
 from flask import current_app as app
 from flask import send_file, abort, Response
