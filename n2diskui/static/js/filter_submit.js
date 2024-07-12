@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+window.Swal = Swal;
 
 export function popUpSuccess(fileDownloadLoc){
     if (fileDownloadLoc && fileDownloadLoc.trim() !== ""){
@@ -24,7 +25,8 @@ export function popUpFailure(failureMessage){
     }
 }
 
-function verifyDataBeforeSubmit() {
+function verifyDataBeforeSubmit(event) {
+    event.preventDefault();
     const filterFormData = new FormData(document.getElementById('filter_form'));
     const dataObj = Object.fromEntries(filterFormData.entries())
 

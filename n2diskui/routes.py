@@ -12,17 +12,17 @@ def index():
 def download_file(filename):
     return get_file_download(filename)
 
-@app.route('/filter_return_pcap', methods=['POST'])
+@app.route('/filter_verify_return_pcap', methods=['POST'])
 def clean_form_download_file():
     app.logger.info(request.json)
-    timeline_directory = request.json['timeline_directory']
-    start_date = request.json['start_date']
-    end_date = request.json['end_date']
-    bpf_filter = request.json['bpf_filter']
-    save_to = request.json['save_to']
+    pcap_filter_form = request.json['dataObj']
+    timeline_directory = pcap_filter_form['timeline_directory']
+    start_date = pcap_filter_form['start_date']
+    end_date = pcap_filter_form['end_date']
+    bpf_filter = pcap_filter_form['bpf_filter']
+    save_to = pcap_filter_form['save_to']
 
     response = filter_create_pcap_from_timeline(timeline_directory, start_date, end_date, bpf_filter, save_to)
-    app.logger.info('HELLLOOOOOO')
     app.logger.info(response)
     match response[0]:
         case True:
@@ -32,6 +32,7 @@ def clean_form_download_file():
             match response[1].lower():
                 case 'invalid':
                     # TODO: handle this better
+                    app.logger.warning('invalid case')
                     message = f'Input Validation failed for: {response[2]}'
                     status_code = 501
                 case _:
@@ -40,5 +41,5 @@ def clean_form_download_file():
         case _:
             raise ValueError(f'Something very strange has happened while attempting to create a pcap file from timeline files. \
                             {type(response[0])} should be a Boolean.')
-              
+       
     return jsonify(isValid=response[0], message=message), status_code

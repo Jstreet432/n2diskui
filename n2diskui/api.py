@@ -12,7 +12,7 @@ DOWNLOADABLE_FILE_DIR = f"{app.config['BASE_DIR']}/n2diskui/files"
 def filter_create_pcap_from_timeline(timeline_directory: str, start_date: str, end_date: str, bpf_filter: str, save_to: str) -> Tuple[bool,str]:
     verify_dict = _verify_filter_input(timeline_directory, start_date, end_date)
     message = 'invalid'
-    failed_input = [k for k, v in verify_dict.values() if not v]
+    failed_input = [k for k, v in verify_dict.items() if not v]
     if failed_input:
         return False, message, failed_input
     
