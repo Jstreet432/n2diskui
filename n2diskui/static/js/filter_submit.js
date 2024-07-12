@@ -1,4 +1,3 @@
-import { fail } from "assert";
 import Swal from "sweetalert2";
 
 export function popUpSuccess(fileDownloadLoc){
@@ -39,9 +38,9 @@ function verifyDataBeforeSubmit() {
     .then(response => response.json())
     .then(data => {
         if (data.isValid) {
-            popUpSuccess(data.fileDownloadLoc);
+            popUpSuccess(data.message);
         } else {
-            popUpFailure(data.failureMessage); 
+            popUpFailure(data.message); 
         }
     })
     .catch(error => console.error('Error:', error));
