@@ -6,9 +6,9 @@ export function popUpSuccess(fileDownloadLoc){
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: `File succesfully downloaded to ${fileDownloadLoc}`,
+            text: `${fileDownloadLoc}`,
             showConfirmButton: false,
-            timer: 1500,
+            timer: 5000,
             position: "bottom-right"
         });
     }

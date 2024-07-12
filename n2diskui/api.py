@@ -39,7 +39,7 @@ def filter_create_pcap_from_timeline(timeline_directory: str, start_date: str, e
     try:
         result = subprocess.run(command, check=True)
         # TODO: result is succesful but bpf filter did not return a result.
-        return True, f"Packets saved to {output_file}, {result.stdout}"
+        return True, f"Packet capture saved to the server at {output_file}"
     except subprocess.CalledProcessError as e:
         app.logger.error(f'There was an error indexing the packet. {e}')
         return False, str(e)
