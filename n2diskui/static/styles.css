@@ -25,6 +25,16 @@ body {
     width: 100%;
     flex-wrap: wrap; /* Allow the text to wrap below the navbar */
 }
+.graph-container {
+    background-color: #e0e0e0; /* Nice shade of gray */
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
 .logo {
     flex: 0 0 auto; /* Ensures the logo stays on the left */
@@ -96,9 +106,10 @@ body {
 .main-content {
     margin-top: 40px;
     display: flex;
+    flex-direction: column; /* Ensure items stack vertically */
+    align-items: center;
     width: 80%;
     max-width: 1000px;
-    justify-content: space-between;
 }
 
 .filter-container {
