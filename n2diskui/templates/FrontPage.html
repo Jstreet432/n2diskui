@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type=module src="{{ url_for('static', filename='js/bundle.js') }}"></script>
 </head>
 <body>
@@ -42,12 +43,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="start_date">Start Date:</label>
-                        <input type="text" id="start_date" name="start_date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="end_date">End Date:</label>
-                        <input type="text" id="end_date" name="end_date" required>
+                        <label for="datetimerange">Timeline Range:</label>
+                        <input type="text" id="datetimerange" name="datetimerange" required>
                     </div>
                     <div class="form-group">
                         <label for="bpf_filter">BPF filter:</label>
