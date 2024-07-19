@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Header Example</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>N2Disk</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <script type=module src="{{ url_for('static', filename='js/bundle.js') }}"></script>
 </head>
 <body>
     <header class="header">
@@ -34,7 +36,7 @@
         <div class="filter-container">
             <div class="filter-box">
                 <h2>Filter N2Disk Data</h2>
-                <form action="/filter_return_pcap" method="post">
+                <form id="filter_form">
                     <div class="form-group">
                         <label for="timeline_directory">Timeline Directory:</label>
                         <select id="timeline_directory" name="timeline_directory" required>
@@ -62,7 +64,7 @@
                             <option value="pc">To PC</option>
                         </select>
                     </div>
-                    <button type="submit" class="filter-button">Apply Filters</button>
+                    <button type="submit" class="filter-button", id="filter_button">Apply Filters</button>
                 </form>
             </div>
             <div class="results-box">
