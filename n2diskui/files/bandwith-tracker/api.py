@@ -4,37 +4,28 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Run vnstat command and capture output
-result = subprocess.run(['vnstat', '-i', 'enp4s0', '-h', '--json'], stdout=subprocess.PIPE)
+result = subprocess.run(['vnstat', '-i', 'wlp5s0', '-d', '--json'], stdout=subprocess.PIPE)
 data = json.loads(result.stdout)
 
 # Extract relevant data
-hours = data['interfaces'][0]['traffic']['hour']
+days = data['interfaces'][0]['traffic']['day']
 
 # Create a list to store processed data
 processed_data = []
 
-for hour in hours:
-    date = hour['date']
-    time = hour['time']
-    rx = hour['rx']
+for day in days:
+    date = day['date']
+    rx = day['rx']
     
-    # Combine date and time into a single datetime object
-    datetime_str = f"{date['year']}-{date['month']:02d}-{date['day']:02d} {time['hour']:02d}:{time['minute']:02d}"
-    processed_data.append({'datetime': datetime_str, 'rx': rx})
+    # Combine date into a single string
+    datetime_str = f"{date['year']}-{date['month']:02d}-{date['day']:02d}"
+    processed_data.append({'date': datetime_str, 'rx': rx})
 
 # Create DataFrame
 df = pd.DataFrame(processed_data)
-df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M')
-df.set_index('datetime', inplace=True)
-
-# Plot the data
-plt.figure(figsize=(10, 5))
-plt.plot(df.index, df['rx'])
-plt.xlabel('Time')
-plt.ylabel('Received Bytes')
-plt.title('Network Receive Bytes Over Time')
-plt.grid(True)
-plt.show()
+df['date'] = pd.to_datetime(df['date'], format='%Y-%m-%d')
+df.set_index('date', inplace=True)
+print(df)
 
 # Save data to JSON
-df.reset_index()[['datetime', 'rx']].to_json('/path/to/rx_bytes.json', orient='records', date_format='iso')
+df.to_json('here.json', orient='records')
