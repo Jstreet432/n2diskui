@@ -17,12 +17,11 @@ def clean_form_download_file():
     app.logger.info(request.json)
     pcap_filter_form = request.json['dataObj']
     timeline_directory = pcap_filter_form['timeline_directory']
-    start_date = pcap_filter_form['start_date']
-    end_date = pcap_filter_form['end_date']
+    date_range = pcap_filter_form['datetimerange']
     bpf_filter = pcap_filter_form['bpf_filter']
     save_to = pcap_filter_form['save_to']
 
-    response = filter_create_pcap_from_timeline(timeline_directory, start_date, end_date, bpf_filter, save_to)
+    response = filter_create_pcap_from_timeline(timeline_directory, date_range, bpf_filter, save_to)
     app.logger.info(response)
     match response[0]:
         case True:

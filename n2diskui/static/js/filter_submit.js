@@ -1,8 +1,10 @@
 import Swal from "sweetalert2";
 import moment from "moment";
+import $ from "jquery";
 import 'daterangepicker';
 
 window.Swal = Swal;
+window.$ = $;
 
 export function popUpSuccess(fileDownloadLoc){
     if (fileDownloadLoc && fileDownloadLoc.trim() !== ""){
@@ -51,22 +53,21 @@ function verifyDataBeforeSubmit(event) {
     .catch(error => console.error('Error:', error));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('filter_button').addEventListener('click', verifyDataBeforeSubmit);
-});
-
 export function buildDateRangePicker(){
-    const datetimeWidget = document.querySelector("input[name='datetimerange']");
-    if (datetimeWidget) {
-        new DateRangePicker(datetimeWidget, {
-            timepicker: true,
-            timePicker24Hour: true,
+    $(function(){
+        $('input[name="datetimerange"]').daterangepicker({
+            timePicker: true,
             startDate: moment().startOf('hour'),
-            endDate: moment().startOf('hour').add(1 , 'hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
             locale: {
                 format: 'YYYY-MM-DD HH:mm:ss'
             }
-
         });
-    }
+    });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('filter_button').addEventListener('click', verifyDataBeforeSubmit);
+    buildDateRangePicker();
+});
+

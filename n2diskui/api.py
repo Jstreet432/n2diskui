@@ -9,13 +9,9 @@ from flask import send_file, abort, Response
 
 DOWNLOADABLE_FILE_DIR = f"{app.config['BASE_DIR']}/n2diskui/files"
 
-def filter_create_pcap_from_timeline(timeline_directory: str, start_date: str, end_date: str, bpf_filter: str, save_to: str) -> Tuple[bool,str]:
-    verify_dict = _verify_filter_input(timeline_directory, start_date, end_date)
-    message = 'invalid'
-    failed_input = [k for k, v in verify_dict.items() if not v]
-    if failed_input:
-        return False, message, failed_input
-    
+def filter_create_pcap_from_timeline(timeline_directory: str, date_range, bpf_filter: str, save_to: str) -> Tuple[bool,str]:
+    start_date, end_date = date_range.split(' - ')
+
     match save_to:
         case "server":
             save_to = f'{datetime.now()}.pcap'
@@ -68,19 +64,8 @@ def get_file_download(filename: str) -> Response:
         abort(500)
     except Exception as e:
         if not file_path: file_path = 'File path was not found.'
-        app.logger.error(f'Error occurred when user attempted to download a file: \n {file_path} \n {e} ')
+        app.logger.error(f'Error occurred when user attempted to download a file: \n {file_path} \n {e} ')  
         abort(500)
-    
-def _verify_filter_input(timeline_directory, start_date, end_date):
-    verified_dict = {}
-    # TODO: Timeline directory needs a whole lot of work to verify it is a valid timeline directory
-    verified_dict['timeline_directory'] = True
-    # Verify Dates
-    date_pattern = '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
-    verified_dict['start_date'] = re.match(date_pattern, start_date) is not None
-    verified_dict['end_date'] = re.match(date_pattern, end_date) is not None
-    return verified_dict
-
 
 if __name__ == "__main__":
-    filter_create_pcap_from_timeline("/home/storage/","2024-06-27 00:00:00", "2024-07-30 12:00:00", "host 192.168.1.151", "output.pcap")
+    filter_create_pcap_from_timeline("/home/storage/","2024-06-27 00:00:00 - 2024-07-30 12:00:00", "host 192.168.1.151", "output.pcap")
