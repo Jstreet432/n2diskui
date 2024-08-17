@@ -6,6 +6,7 @@ from typing import Tuple
 # This proxy import gives us autocomplete when referencing app
 from flask import current_app as app
 from flask import send_file, abort, Response
+from models.timeline_dir_model import TimelineDir
 
 DOWNLOADABLE_FILE_DIR = f"{app.config['BASE_DIR']}/n2diskui/files"
 
@@ -66,6 +67,15 @@ def get_file_download(filename: str) -> Response:
         if not file_path: file_path = 'File path was not found.'
         app.logger.error(f'Error occurred when user attempted to download a file: \n {file_path} \n {e} ')  
         abort(500)
+
+def sense_timeline_dir(timeline_dir_path: str):
+    try:
+        timeline_dir = TimelineDir(timeline_dir_path)
+    except FileNotFoundError:
+        app.logger.error('Error sensing timeline directory.  Please update configuration.')
+    
+    
+
 
 if __name__ == "__main__":
     filter_create_pcap_from_timeline("/home/storage/","2024-06-27 00:00:00 - 2024-07-30 12:00:00", "host 192.168.1.151", "output.pcap")
